@@ -1,0 +1,22 @@
+{
+  "name": "dom-painter",
+  "version": "1.0.1",
+  "description": "Converts dom to an image",
+  "main": "src/domPainter.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "git repository": "https://github.com/Longgererer/dom-pointer",
+  "keywords": [
+    "dom",
+    "image",
+    "string",
+    "screenshot"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Longgererer/dom-pointer"
+  },
+  "author": "lliiooiill",
+  "license": "MIT"
+}

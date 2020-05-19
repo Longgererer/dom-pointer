@@ -1,5 +1,13 @@
 # dom-painter
 
+<a href="https://www.npmjs.com/package/dom-painter">
+  <img src="https://img.shields.io/badge/npm-v1.0.7-yellowgreen"/>
+</a>
+
+<a href="https://www.npmjs.com/package/dom-painter">
+  <img src="https://img.shields.io/npm/dw/dom-painter"/>
+</a>
+
 converts dom to an image.
 
 English | <a href="https://github.com/Longgererer/dom-pointer/blob/master/READMECN.md">简体中文</a>

@@ -238,7 +238,10 @@ function generateDefaultConfig(config) {
     return config;
 }
 function judgeDom(element) {
-    return element instanceof HTMLElement;
+    if (element instanceof HTMLElement || element instanceof HTMLBodyElement || element.nodeName === 'BODY') {
+        return true;
+    }
+    return false;
 }
 function drawImage(width, height, svg, quality, format) {
     return __awaiter(this, void 0, void 0, function () {
@@ -398,9 +401,12 @@ function styleToString(node, styleNames) {
             }
         }
         if (fName === 'backgroundImage') {
-            var url = value.split('(')[1].split(')')[0];
-            if (!isBase64(url)) {
-                continue;
+            var url = '';
+            if (/^url\(/.test(value)) {
+                url = value.split('(')[1].split(')')[0];
+                if (url && !isBase64(url)) {
+                    continue;
+                }
             }
         }
         if (parentStyle) {
@@ -427,7 +433,9 @@ function styleToString(node, styleNames) {
             }
         }
         if (fName === 'fontFamily') {
-            value = value.replace(/"/g, '');
+            if (value) {
+                value = value.replace(/"/g, '');
+            }
         }
         style.push(name_1 + ": " + value + ";");
     }

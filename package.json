@@ -1,6 +1,6 @@
 {
   "name": "dom-painter",
-  "version": "1.0.1",
+  "version": "1.0.7",
   "description": "Converts dom to an image",
   "main": "src/domPainter.js",
   "scripts": {

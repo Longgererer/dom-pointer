@@ -204,7 +204,10 @@ function generateDefaultConfig(config: Config) {
   return config
 }
 function judgeDom(element: any) {
-  return element instanceof HTMLElement
+  if (element instanceof HTMLElement || element instanceof HTMLBodyElement || element.nodeName === 'BODY') {
+    return true
+  }
+  return false
 }
 async function drawImage(width: number, height: number, svg: any, quality?: number, format?: string) {
   let url: string = ''
@@ -327,9 +330,12 @@ function styleToString(node: any, styleNames: String[]) {
       }
     }
     if (fName === 'backgroundImage') {
-      const url = value.split('(')[1].split(')')[0]
-      if (!isBase64(url)) {
-        continue
+      let url: string = ''
+      if (/^url\(/.test(value)) {
+        url = value.split('(')[1].split(')')[0]
+        if (url && !isBase64(url)) {
+          continue
+        }
       }
     }
     if (parentStyle) {
@@ -353,7 +359,9 @@ function styleToString(node: any, styleNames: String[]) {
       }
     }
     if (fName === 'fontFamily') {
-      value = value.replace(/"/g, '');
+      if(value){
+        value = value.replace(/"/g, '');
+      }
     }
     style.push(`${name}: ${value};`);
   }
